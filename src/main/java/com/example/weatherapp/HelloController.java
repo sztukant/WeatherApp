@@ -30,8 +30,7 @@ public class HelloController {
     public ComboBox cityChoice;
 
     @FXML
-    public void initialize() throws IOException {
-        dg.getCities();
+    public void initialize() {
         List<String> cityList = new ArrayList<>(dg.cities.keySet());
         cityList.sort(String::compareToIgnoreCase);
         cityChoice.getItems().addAll(cityList);

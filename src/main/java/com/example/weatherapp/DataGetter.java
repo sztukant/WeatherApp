@@ -31,32 +31,4 @@ public class DataGetter {
     JSONObject showData(){
         return cityData;
     }
-    void getCities() throws IOException {
-
-
-        cityString = IOUtils.toString(URI.create("https://danepubliczne.imgw.pl/api/data/synop/format/json"), StandardCharsets.UTF_8);
-        city = new JSONObject(cityString.substring(1, (cityString.length() - 2)));
-
-
-        for (int i = 0; i < cityString.length(); i++) {
-            StringBuilder s = new StringBuilder();
-            String str;
-            String key;
-            cityString = cityString.substring(cityString.indexOf("\"stacja\":\"") + 9, cityString.length() - 1);
-            if (cityString.indexOf("\"") == 0) {
-                cityString = cityString.substring(1, cityString.length() - 1);
-            }
-            s.append(cityString, 0, cityString.indexOf("\""));
-            key = s.toString();
-            if (s.toString().contains(" ")) {
-                s.deleteCharAt(s.indexOf(" "));
-            }
-            if (s.toString().contains("ą")) {
-                s.replace(s.toString().indexOf("ą"), s.toString().indexOf("ą"), "a");
-            }
-            str = s.toString().toLowerCase();
-            cityList.put(key, str);
-
-        }
     }
-}
