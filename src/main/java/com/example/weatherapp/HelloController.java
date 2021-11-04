@@ -49,4 +49,4 @@ public class HelloController {
         date.setText(dg.showData().getString("data_pomiaru"));
         stationid.setText(dg.showData().getString("id_stacji"));
     }
-    }
+}
