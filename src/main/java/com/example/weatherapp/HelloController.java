@@ -3,7 +3,6 @@ package com.example.weatherapp;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,16 +36,16 @@ public class HelloController {
         }
     @FXML
     protected void getOnAction() throws IOException {
-        //StringBuilder sb = new StringBuilder();
-        //sb.append(dg.showData().getString("id_stacji")+"  "+dg.showData().getString("godzina_pomiaru")+":00");
-        //String dateHour = sb.toString();
         dg.getData(cityChoice.getValue().toString());
+        StringBuilder sb = new StringBuilder();
+        sb.append("  ").append(dg.showData().getString("godzina_pomiaru")+":00");
+        String dateHour = sb.toString();
         temperature.setText(dg.showData().getString("temperatura"));
         pressure.setText(dg.showData().getString("cisnienie"));
         windspeed.setText(dg.showData().getString("predkosc_wiatru"));
         winddirection.setText(dg.showData().getString("kierunek_wiatru"));
         humidity.setText(dg.showData().getString("wilgotnosc_wzgledna"));
-        date.setText(dg.showData().getString("data_pomiaru"));
+        date.setText(dg.showData().getString("data_pomiaru")+dateHour);
         stationid.setText(dg.showData().getString("id_stacji"));
     }
 }
